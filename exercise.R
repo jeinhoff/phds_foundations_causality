@@ -1,6 +1,6 @@
 # ===========================================================================
 # Foundations of causal inference — hands-on exercise
-# MPIDR Rostock, 7 August 2026
+# MPIDR Rostock, 26 November 2026
 #
 # Running question: does completing a UNIVERSITY degree change COMPLETED
 # FERTILITY (number of children by age 45)?
