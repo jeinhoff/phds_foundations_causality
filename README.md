@@ -27,5 +27,3 @@ install.packages(c("tidyverse", "marginaleffects"))
 ```
 
 **5. Point R at the folder with the data.** So R can find `fertility.csv`, use **Session ▸ Set Working Directory ▸ To Source File Location** (this points R at the folder holding `exercise.R`).
-
-**6. Run the script.** Work through `exercise.R` one line at a time: put the cursor on a line and press **Ctrl + Enter** (**Cmd + Enter** on a Mac). Read each result before moving on — during the course we walk through it together.
