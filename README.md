@@ -4,10 +4,6 @@ A one-day PhD course at **MPIDR Rostock**, 26 November 2026.
 
 Social scientists are often interested in causal questions but can rarely run experiments. Most research therefore relies on observational data — yet moving from observed associations to causal conclusions is far from straightforward. This course introduces the foundational tools for determining whether and how causal insights can be drawn from such data. We begin by learning how to formulate precise causal questions and define what we want to estimate (“the estimand”) using potential outcomes notation. We then turn to the assumptions required to identify an estimand from observed data, and discuss when these assumptions are (not) defensible in practice. Finally, we examine how different statistical estimators target different estimands, and why this distinction matters. The course emphasizes foundations rather than specific research designs, because any causal analysis first requires clarity about what is being estimated and under what assumptions.
 
-## 📽️ Slides
-
-Open `slides.html` in **any web browser** — just double-click the file. Everything is embedded in that one file, so it works offline with no extra downloads. Use the arrow keys to move through the slides.
-
 ## ⚙️ Setup
 
 The afternoon has a short hands-on lab in **R**. Please set this up before the course oder during the lunch break — it takes about 10 minutes. No prior R experience is assumed; the steps below start from scratch.
