@@ -4,7 +4,7 @@ Social scientists are often interested in causal questions but can rarely run ex
 
 ## ⚙️ Setup
 
-The afternoon has a short hands-on lab in **R**. Please set this up before the course oder during the lunch break — it takes about 10 minutes. No prior R experience is assumed; the steps below start from scratch.
+The afternoon has a short hands-on lab in **R**. Please set this up before the course or during the lunch break — it takes about 10 minutes. No prior R experience is assumed; the steps below start from scratch.
 
 **1. Install R and RStudio (both free).** R is the language; RStudio is a friendly window for writing and running it.
 - R: <https://cran.r-project.org> — pick your operating system and install with the default options.
