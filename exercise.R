@@ -39,7 +39,15 @@ avg_comparisons(mod, variables = "university")
 
 # Discuss: sign and size? which estimand? which assumption worries you most?
 
-# --- Step 4: ATT and CATE --------------------------------------------------
+# --- Step 4: did we recover the truth? -------------------------------------
+# The data are simulated, so we know each person's true potential outcomes.
+round(c(
+  truth     = mean(dat$oracle_y1 - dat$oracle_y0),                       # the real ATE
+  naive     = unname(coef(lm(n_children ~ university, data = dat))[2]),  # ignore confounding
+  g_formula = avg_comparisons(mod, variables = "university")$estimate    # adjust for it
+), 2)
+
+# --- Step 5: ATT and CATE (the grid is the estimand) -----------------------
 # ATT — only among those who actually got a degree:
 avg_comparisons(mod, variables = "university",
                 newdata = subset(dat, university == 1))
@@ -50,11 +58,8 @@ avg_comparisons(mod, variables = "university", by = "woman")
 # Visualise the heterogeneity:
 plot_comparisons(mod, variables = "university", by = "woman")
 
-# --- Step 5: explore the traps ---------------------------------------------
-# The true ATE (only knowable because the data are simulated):
-mean(dat$oracle_y1 - dat$oracle_y0)
-
-# 5a. MEDIATOR: add `income`. The estimate shrinks — you just blocked part of
+# --- Step 6: explore the traps ---------------------------------------------
+# 6a. MEDIATOR: add `income`. The estimate shrinks — you just blocked part of
 #     the causal path university -> income -> ... . This is over-control bias.
 mod_med <- lm(
   n_children ~ university * (
@@ -63,7 +68,7 @@ mod_med <- lm(
   data = dat)
 avg_comparisons(mod_med, variables = "university")
 
-# 5b. COLLIDER: add `owns_home`, a common effect of BOTH the degree and
+# 6b. COLLIDER: add `owns_home`, a common effect of BOTH the degree and
 #     fertility. Conditioning on it opens a spurious path and biases the answer.
 mod_col <- lm(
   n_children ~ university * (
@@ -72,7 +77,7 @@ mod_col <- lm(
   data = dat)
 avg_comparisons(mod_col, variables = "university")
 
-# 5c. Compare all three to the truth:
+# 6c. Compare all three to the truth:
 round(c(
   truth        = mean(dat$oracle_y1 - dat$oracle_y0),
   correct      = avg_comparisons(mod,     variables = "university")$estimate,
@@ -80,7 +85,7 @@ round(c(
   add_collider = avg_comparisons(mod_col, variables = "university")$estimate
 ), 2)
 
-# 5d. Your turn: compute a CATE by `migration_background`, and plot it.
+# 6d. Your turn: compute a CATE by `migration_background`, and plot it.
 # avg_comparisons(mod, variables = "university", by = "migration_background")
 
 # Take-away: the estimation code barely changes — but adding the WRONG control
